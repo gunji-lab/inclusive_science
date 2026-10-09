@@ -207,7 +207,7 @@ export const members: Member[] = [
   },
   {
     id: "daiki-inomata",
-    nameJa: "猪俣 大輝",
+    nameJa: "猪股 大輝",
     nameEn: "Inomata Daiki",
     affiliation: "東洋大学 文学部 教育学科",
     position: "助教",
