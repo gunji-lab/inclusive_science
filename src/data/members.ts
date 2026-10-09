@@ -1,7 +1,7 @@
 export interface Member {
   id: string;
   nameJa: string;
-  nameEn: string;
+  nameEn?: string;
   affiliation: string;
   position?: string;
   roles: string[];
@@ -44,7 +44,7 @@ export const members: Member[] = [
     affiliation: "東洋大学 生命科学部 生命科学科",
     position: "准教授",
     roles: ["広報"],
-    teams: [],
+    teams: ["environment-ecology"],
     specialty: "動物機能形態学／動物の形態と進化",
     profileUrl: "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dlsc/laboratory/gunji/",
     order: 3,
@@ -55,7 +55,7 @@ export const members: Member[] = [
     nameEn: "Joji Horiuchi",
     affiliation: "東洋大学 生命科学部 生体医工学科",
     position: "教授",
-    roles: [],
+    roles: ["グループリーダー"],
     teams: ["biological-systems"],
     specialty: "生理学／脳神経科学／ストレスと自律反応",
     profileUrl: "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dben/laboratory/horiuchi/",
@@ -97,9 +97,100 @@ export const members: Member[] = [
     profileUrl: "https://www.toyo.ac.jp/staff/00061.html",
     order: 7,
   },
+  {
+    id: "kazuya-shimizu",
+    nameJa: "清水 和哉",
+    affiliation: "東洋大学",
+    roles: ["グループリーダー"],
+    teams: ["environment-ecology"],
+    order: 8,
+  },
+  {
+    id: "kazuhiro-shiizaki",
+    nameJa: "椎崎 一宏",
+    affiliation: "東洋大学",
+    roles: [],
+    teams: ["environment-ecology"],
+    order: 9,
+  },
+  {
+    id: "motohiro-ito",
+    nameJa: "伊藤 元裕",
+    affiliation: "東洋大学",
+    roles: [],
+    teams: ["environment-ecology"],
+    order: 10,
+  },
+  {
+    id: "ken-takemasa",
+    nameJa: "武正 憲",
+    affiliation: "東洋大学",
+    roles: [],
+    teams: ["environment-ecology"],
+    order: 11,
+  },
+  {
+    id: "hiroshi-suzuki",
+    nameJa: "鈴木 裕",
+    affiliation: "東洋大学",
+    roles: [],
+    teams: ["society-implementation"],
+    order: 12,
+  },
+  {
+    id: "chikako-osera",
+    nameJa: "大瀬良 知子",
+    affiliation: "東洋大学",
+    roles: [],
+    teams: ["society-implementation"],
+    order: 13,
+  },
+  {
+    id: "hideo-kawaguchi",
+    nameJa: "川口 英夫",
+    affiliation: "東洋大学",
+    roles: ["グループリーダー"],
+    teams: ["society-implementation"],
+    order: 14,
+  },
+  {
+    id: "kiyoaki-mieno",
+    nameJa: "三重野 清顕",
+    affiliation: "東洋大学",
+    roles: [],
+    teams: ["society-implementation"],
+    order: 15,
+  },
+  {
+    id: "rie-nagasugi",
+    nameJa: "永杉 理恵",
+    affiliation: "東洋大学",
+    roles: [],
+    teams: ["society-implementation"],
+    order: 16,
+  },
+  {
+    id: "daiki-inomata",
+    nameJa: "猪俣 大輝",
+    affiliation: "東洋大学",
+    roles: [],
+    teams: ["society-implementation"],
+    order: 17,
+  },
 ];
 
-export const operations = members.filter((member) => member.roles.length > 0).sort((a, b) => a.order - b.order);
+const operationRoles = new Set(["プロジェクトリーダー", "プロジェクトオフィサー", "広報"]);
+
+export const operations = members
+  .filter((member) => member.roles.some((role) => operationRoles.has(role)))
+  .sort((a, b) => a.order - b.order);
 
 export const membersByTeam = (teamId: string) =>
-  members.filter((member) => member.teams.includes(teamId)).sort((a, b) => a.order - b.order);
+  members
+    .filter((member) => member.teams.includes(teamId))
+    .sort((a, b) => {
+      const aIsLeader = a.roles.includes("グループリーダー");
+      const bIsLeader = b.roles.includes("グループリーダー");
+      if (aIsLeader !== bIsLeader) return aIsLeader ? -1 : 1;
+      return a.order - b.order;
+    });

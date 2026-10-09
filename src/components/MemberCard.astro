@@ -8,10 +8,8 @@ interface Props {
 
 const { member, compact = false } = Astro.props;
 const initials = member.nameEn
-  .split(" ")
-  .map((part) => part[0])
-  .join("")
-  .slice(0, 2);
+  ? member.nameEn.split(" ").map((part) => part[0]).join("").slice(0, 2)
+  : member.nameJa.replace(/\s/g, "").slice(0, 1);
 ---
 
 <article class:list={["member-card", { "member-card-compact": compact }]}>
@@ -25,7 +23,7 @@ const initials = member.nameEn
   <div class="member-details">
     {member.roles.length > 0 && <p class="member-role">{member.roles.join(" / ")}</p>}
     <h3>{member.nameJa}</h3>
-    <p class="member-name-en">{member.nameEn}</p>
+    {member.nameEn && <p class="member-name-en">{member.nameEn}</p>}
     <p class="member-affiliation">{member.affiliation}{member.position && <>　{member.position}</>}</p>
     {member.specialty && <p class="member-specialty">{member.specialty}</p>}
     {member.profileUrl && (
