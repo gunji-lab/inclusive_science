@@ -134,11 +134,15 @@ export const members: Member[] = [
     order: 10,
   },
   {
-    id: "ken-takemasa",
-    nameJa: "武正 憲",
-    affiliation: "東洋大学",
+    id: "masanori-take",
+    nameJa: "武 正憲",
+    nameEn: "Take Masanori",
+    affiliation: "東洋大学 国際観光学部 国際観光学科",
+    position: "教授",
     roles: [],
     teams: ["environment-ecology"],
+    specialty: "造園学／自然観光資源管理／エコツーリズム",
+    profileUrl: "https://www.toyo.ac.jp/staff/77185.html",
     order: 11,
   },
   {
