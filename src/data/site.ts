@@ -10,7 +10,6 @@ export const navigation = [
   { href: "/", label: "ホーム" },
   { href: "/about/", label: "概要" },
   { href: "/people/", label: "組織・メンバー" },
-  { href: "/projects/", label: "研究チーム" },
   { href: "/research/", label: "研究成果" },
   { href: "/news/", label: "お知らせ" },
 ];

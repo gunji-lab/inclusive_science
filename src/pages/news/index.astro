@@ -1,8 +1,62 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import PlaceholderPage from "../../components/PlaceholderPage.astro";
+import { getCollection } from "astro:content";
+
+const news = (await getCollection("news", ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime(),
+);
+
+const formatDate = (date: Date) =>
+  new Intl.DateTimeFormat("ja-JP", {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).format(date);
+
+const categoryLabels = {
+  news: "NEWS",
+  event: "EVENT",
+  research: "RESEARCH",
+  media: "MEDIA",
+};
 ---
 
-<BaseLayout title="お知らせ">
-  <PlaceholderPage eyebrow="NEWS" title="お知らせ" message="このページは次の制作段階で追加します。" />
+<BaseLayout title="お知らせ" description="インクルーシブ・サイエンスの活動やイベントに関するお知らせです。">
+  <section class="news-page" aria-labelledby="news-title">
+    <div class="news-container">
+      <header class="news-heading">
+        <p class="eyebrow">NEWS</p>
+        <h1 id="news-title">お知らせ</h1>
+      </header>
+
+      <div class="news-list">
+        {news.map((entry) => (
+          <article class="news-item">
+            <div class="news-meta">
+              <time datetime={entry.data.date.toISOString()}>{formatDate(entry.data.date)}</time>
+              <span>{categoryLabels[entry.data.category]}</span>
+            </div>
+            <div class="news-body">
+              <h2>{entry.data.title}</h2>
+              <p>{entry.data.summary}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
 </BaseLayout>
+
+<style>
+  .news-page{min-height:calc(100vh - 130px);padding:158px 24px 110px;background:var(--paper)}
+  .news-container{width:min(var(--content),100%);margin-inline:auto}
+  .news-heading{max-width:var(--reading);margin:0 auto 58px}
+  .news-heading h1{margin:12px 0 0;font-size:clamp(42px,5vw,58px);line-height:1.35;letter-spacing:-.035em;font-weight:600}
+  .news-list{max-width:var(--reading);margin-inline:auto;border-top:1px solid var(--line)}
+  .news-item{display:grid;grid-template-columns:150px minmax(0,1fr);gap:30px;padding:36px 0 40px;border-bottom:1px solid var(--line)}
+  .news-meta{padding-top:5px;display:flex;flex-direction:column;gap:8px;color:var(--muted);font:600 14px var(--sans);letter-spacing:.04em}
+  .news-meta span{color:var(--sage);font-size:12px;letter-spacing:.1em}
+  .news-body h2{margin:0 0 14px;font-size:23px;line-height:1.65;letter-spacing:-.015em;font-weight:600}
+  .news-body p{margin:0;font-size:17px;line-height:1.9}
+  @media(max-width:660px){.news-page{padding:125px 20px 80px}.news-heading{margin-bottom:40px}.news-item{grid-template-columns:1fr;gap:15px;padding:30px 0 34px}.news-meta{flex-direction:row;align-items:center;gap:16px}.news-body h2{font-size:21px}.news-body p{font-size:16px}}
+</style>
