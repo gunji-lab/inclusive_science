@@ -191,10 +191,14 @@ export const members: Member[] = [
   },
   {
     id: "rie-nagasugi",
-    nameJa: "永杉 理恵",
-    affiliation: "東洋大学",
+    nameJa: "永杉 理惠",
+    nameEn: "Nagasugi Rie",
+    affiliation: "東洋大学 文学部 教育学科",
+    position: "講師",
     roles: [],
     teams: ["society-implementation"],
+    specialty: "特別支援教育（肢体不自由）",
+    profileUrl: "https://www.toyo.ac.jp/staff/24029.html",
     order: 16,
   },
   {
