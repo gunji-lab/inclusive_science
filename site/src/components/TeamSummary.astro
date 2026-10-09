@@ -1,0 +1,21 @@
+---
+interface Props {
+  number: string;
+  labelEn: string;
+  name: string;
+  theme: string;
+  summary: string;
+  color: "red" | "green" | "blue";
+}
+
+const { number, labelEn, name, theme, summary, color } = Astro.props;
+---
+
+<article class:list={["team-row", `team-${color}`, "reveal"]}>
+  <p class="team-index">{number} <span>{labelEn}</span></p>
+  <div class="team-body">
+    <p class="team-group">{name}</p>
+    <h3>{theme}</h3>
+    <p>{summary}</p>
+  </div>
+</article>

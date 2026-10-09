@@ -1,0 +1,18 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  message: string;
+}
+
+const { eyebrow, title, message } = Astro.props;
+---
+
+<section class="placeholder-page">
+  <div>
+    <p class="eyebrow">{eyebrow}</p>
+    <h1>{title}</h1>
+    <p>{message}</p>
+    <a href="/about/">プロジェクト概要を見る</a>
+  </div>
+</section>

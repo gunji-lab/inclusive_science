@@ -1,0 +1,22 @@
+---
+import { navigation, site } from "../data/site";
+---
+
+<header class="site-header" data-header>
+  <a class="brand" href="/" aria-label={`${site.name} トップへ`}>
+    <img
+      class="brand-logo"
+      src="/images/inclusive-science-logo-transparent.png"
+      alt=""
+      width="1226"
+      height="768"
+    />
+    <span><strong>{site.name}</strong><small>TOYO UNIVERSITY RESEARCH PROJECT</small></span>
+  </a>
+  <button class="menu-button" type="button" aria-expanded="false" aria-controls="global-nav">
+    <span>MENU</span><i></i><i></i>
+  </button>
+  <nav id="global-nav" class="global-nav" aria-label="メインナビゲーション">
+    {navigation.map((item) => <a href={item.href}>{item.label}</a>)}
+  </nav>
+</header>
