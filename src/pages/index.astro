@@ -90,7 +90,7 @@ const formatDate = (date: Date) =>
           {latestNews.map((entry) => (
             <article>
               <time datetime={entry.data.date.toISOString()}>{formatDate(entry.data.date)}</time>
-              <h3>{entry.data.title}</h3>
+              <h3><a href={`/news/${entry.id}/`}>{entry.data.title}</a></h3>
               <p>{entry.data.summary}</p>
             </article>
           ))}
@@ -145,6 +145,8 @@ const formatDate = (date: Date) =>
   .home-news-list article{display:grid;grid-template-columns:128px minmax(0,1fr);column-gap:24px;padding:25px 0 27px;border-bottom:1px solid var(--line)}
   .home-news-list time{padding-top:4px;color:var(--muted);font:600 13px var(--sans);letter-spacing:.03em}
   .home-news-list h3{margin:0;font-size:18px;line-height:1.65;font-weight:600}
+  .home-news-list h3 a{color:inherit;text-decoration:none}
+  .home-news-list h3 a:hover,.home-news-list h3 a:focus-visible{color:var(--sage)}
   .home-news-list p{grid-column:2;margin:9px 0 0;color:var(--muted);display:-webkit-box;overflow:hidden;font-size:14px;line-height:1.75;-webkit-box-orient:vertical;-webkit-line-clamp:2}
   .mobile-news-link{display:none}
   @media(max-width:900px){.vision-grid{grid-template-columns:1fr;gap:34px}.vision-grid header,.vision-copy{max-width:var(--reading);margin-inline:auto;width:100%}.updates-grid{grid-template-columns:1fr;gap:70px}.research-preview{padding-right:0;border-right:0}.field-item{grid-template-columns:58px minmax(0,1fr)}.field-theme{grid-column:2}}
