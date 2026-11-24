@@ -19,13 +19,21 @@ const formatDate = (date: Date) =>
   title="ホーム"
   description="多様性を理解し、つなぎ、活かす新しい科学。東洋大学重点研究推進プロジェクト『インクルーシブ・サイエンス』の公式サイトです。"
 >
+  <div class="home-intro" id="home-intro" role="dialog" aria-label="サイトの紹介">
+    <div class="home-intro-inner">
+      <p class="hero-kicker">TOYO UNIVERSITY RESEARCH PROJECT</p>
+      <p class="intro-title">多様性を、<br /><em>力に変える。</em></p>
+      <button class="intro-skip" id="intro-skip" type="button">トップページを見る <span aria-hidden="true">→</span></button>
+    </div>
+  </div>
+  <noscript><style>.home-intro{display:none!important}</style></noscript>
+
   <section class="home-hero" aria-labelledby="home-title">
     <div class="hero-inner">
       <div class="hero-copy">
         <p class="hero-kicker">TOYO UNIVERSITY RESEARCH PROJECT</p>
-        <h1 id="home-title">多様性を、<br /><em>力に変える。</em></h1>
-        <p class="hero-lead">見過ごされてきた一つひとつの違いに目を向け、<br />生命・環境・社会の新しい関係をひらきます。</p>
-        <p class="project-name">インクルーシブ・サイエンスの創成</p>
+        <h1 id="home-title">インクルーシブ・<br />サイエンスの創成</h1>
+        <p class="hero-lead">生体から生態系まで、多様性の相互作用を理解し、<br />共生社会のあり方を探る研究プロジェクトです。</p>
         <a class="hero-link" href="/about/">プロジェクトについて <span aria-hidden="true">→</span></a>
       </div>
       {latestNews[0] && (
@@ -113,8 +121,40 @@ const formatDate = (date: Date) =>
   </section>
 </BaseLayout>
 
+<script is:inline>
+  (() => {
+    const intro = document.getElementById("home-intro");
+    const skip = document.getElementById("intro-skip");
+    if (!intro || !skip) return;
+
+    let alreadySeen = false;
+    try { alreadySeen = sessionStorage.getItem("inclusive-science-intro-seen") === "1"; } catch {}
+    if (alreadySeen || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      intro.hidden = true;
+      return;
+    }
+
+    const dismiss = () => {
+      intro.classList.add("is-dismissed");
+      intro.setAttribute("aria-hidden", "true");
+      try { sessionStorage.setItem("inclusive-science-intro-seen", "1"); } catch {}
+      window.setTimeout(() => { intro.hidden = true; }, 450);
+    };
+    const timer = window.setTimeout(dismiss, 2200);
+    skip.addEventListener("click", () => { window.clearTimeout(timer); dismiss(); });
+  })();
+</script>
+
 <style>
-  .home-hero{position:relative;min-height:760px;padding:170px 24px 105px;display:flex;align-items:center;overflow:hidden;background:#faf8f1}
+  .home-intro{position:fixed;z-index:100;inset:0;display:flex;align-items:center;background:#faf8f1;transition:opacity .45s ease,visibility .45s ease}
+  .home-intro[hidden]{display:none}
+  .home-intro.is-dismissed{opacity:0;visibility:hidden;pointer-events:none}
+  .home-intro-inner{width:min(var(--content),100%);margin-inline:auto;padding:40px 24px}
+  .intro-title{margin:28px 0 45px;font-size:clamp(64px,8vw,104px);line-height:1.17;letter-spacing:-.065em;font-weight:600}
+  .intro-title em{color:var(--sage);font-style:normal}
+  .intro-skip{padding:9px 0;border:0;border-bottom:1px solid var(--ink);background:none;color:var(--ink);font:600 15px "Noto Sans JP",sans-serif;cursor:pointer}
+  .intro-skip span{margin-left:12px}
+  .home-hero{position:relative;min-height:600px;padding:150px 24px 90px;display:flex;align-items:center;overflow:hidden;background:#faf8f1}
   .hero-inner{position:relative;z-index:2;width:min(var(--content),100%);margin-inline:auto}
   .hero-news{position:absolute;right:0;bottom:8px;width:330px;padding:24px 27px;background:var(--white);border-top:3px solid var(--sage);box-shadow:0 12px 32px rgba(31,46,35,.07)}
   .hero-news-meta{display:flex;align-items:center;gap:16px;color:var(--muted);font:600 12px var(--sans);letter-spacing:.05em}
@@ -125,11 +165,9 @@ const formatDate = (date: Date) =>
   .hero-news h2 a:hover,.hero-news h2 a:focus-visible,.hero-news-all:hover,.hero-news-all:focus-visible{color:var(--sage)}
   .hero-news-all{color:#55755e;font-size:12px;font-weight:600;text-decoration:none}
   .hero-kicker,.section-label{margin:0;color:var(--sage);font:700 13px var(--sans);letter-spacing:.12em}
-  .home-hero h1{max-width:760px;margin:25px 0 30px;font-size:clamp(64px,8vw,104px);line-height:1.17;letter-spacing:-.065em;font-weight:600}
-  .home-hero h1 em{color:var(--sage);font-style:normal}
-  .hero-lead{max-width:650px;margin:0;font-size:20px;line-height:1.95;letter-spacing:.015em}
-  .project-name{margin:28px 0 0;color:var(--muted);font-size:15px;font-weight:600;letter-spacing:.04em}
-  .hero-link{display:inline-flex;align-items:center;gap:18px;margin-top:38px;padding-bottom:7px;border-bottom:1px solid var(--ink);font-size:15px;font-weight:600;text-decoration:none}
+  .home-hero h1{max-width:720px;margin:22px 0 26px;font-size:clamp(42px,4.5vw,58px);line-height:1.4;letter-spacing:-.035em;font-weight:600}
+  .hero-lead{max-width:650px;margin:0;font-size:17px;line-height:1.9;letter-spacing:.005em}
+  .hero-link{display:inline-flex;align-items:center;gap:18px;margin-top:30px;padding-bottom:7px;border-bottom:1px solid var(--ink);font-size:15px;font-weight:600;text-decoration:none}
   .hero-link span,.text-link span{transition:transform .2s}
   .hero-link:hover span,.hero-link:focus-visible span,.text-link:hover span,.text-link:focus-visible span{transform:translateX(5px)}
   .home-section{padding:105px 24px 112px}
@@ -170,7 +208,7 @@ const formatDate = (date: Date) =>
   .home-news-list p{grid-column:2;margin:9px 0 0;color:var(--muted);display:-webkit-box;overflow:hidden;font-size:14px;line-height:1.75;-webkit-box-orient:vertical;-webkit-line-clamp:2}
   .mobile-news-link{display:none}
   @media(max-width:900px){.vision-grid{grid-template-columns:1fr;gap:34px}.vision-grid header,.vision-copy{max-width:var(--reading);margin-inline:auto;width:100%}.updates-grid{grid-template-columns:1fr;gap:70px}.research-preview{padding-right:0;border-right:0}.field-item{grid-template-columns:58px minmax(0,1fr)}.field-theme{grid-column:2}}
-  @media(max-width:1100px){.hero-news{width:280px}.home-hero h1{font-size:clamp(64px,7vw,84px)}}
-  @media(max-width:900px){.hero-news{position:static;width:min(420px,100%);margin-top:42px}.home-hero{min-height:0}.home-hero h1{font-size:clamp(57px,8vw,76px)}}
-  @media(max-width:660px){.home-hero{min-height:700px;padding:135px 20px 82px;align-items:flex-start}.home-hero h1{margin-top:24px;font-size:57px;line-height:1.23}.hero-lead{font-size:17px}.hero-lead br{display:none}.project-name{max-width:260px;line-height:1.7}.home-section{padding:76px 20px 82px}.fields-section{padding-top:62px;padding-bottom:68px}.vision-grid h2,.home-section-heading h2,.updates-section h2{font-size:31px}.vision-copy p{font-size:17px}.home-section-heading{margin-bottom:28px}.field-item{grid-template-columns:44px minmax(0,1fr);gap:14px;padding:19px 0 21px}.field-number{font-size:25px}.field-title>p{font-size:10px}.field-title h3{font-size:17px}.field-theme{font-size:16px}.updates-grid{gap:65px}.preview-heading-row{align-items:flex-start}.desktop-news-link{display:none}.home-news-list article{grid-template-columns:1fr;gap:7px}.home-news-list p{grid-column:1;margin-top:2px}.mobile-news-link{display:inline-flex;margin-top:28px}}
+  @media(max-width:1100px){.hero-news{width:280px}.home-hero h1{font-size:clamp(42px,4.5vw,54px)}}
+  @media(max-width:900px){.hero-news{position:static;width:min(420px,100%);margin-top:42px}.home-hero{min-height:0}}
+  @media(max-width:660px){.home-intro-inner{padding:30px 20px}.intro-title{font-size:clamp(52px,11vw,72px)}.home-hero{padding:130px 20px 72px;align-items:flex-start}.home-hero h1{margin-top:24px;font-size:38px;line-height:1.4}.hero-lead{font-size:16px}.hero-lead br{display:none}.home-section{padding:76px 20px 82px}.fields-section{padding-top:62px;padding-bottom:68px}.vision-grid h2,.home-section-heading h2,.updates-section h2{font-size:31px}.vision-copy p{font-size:17px}.home-section-heading{margin-bottom:28px}.field-item{grid-template-columns:44px minmax(0,1fr);gap:14px;padding:19px 0 21px}.field-number{font-size:25px}.field-title>p{font-size:10px}.field-title h3{font-size:17px}.field-theme{font-size:16px}.updates-grid{gap:65px}.preview-heading-row{align-items:flex-start}.desktop-news-link{display:none}.home-news-list article{grid-template-columns:1fr;gap:7px}.home-news-list p{grid-column:1;margin-top:2px}.mobile-news-link{display:inline-flex;margin-top:28px}}
 </style>
