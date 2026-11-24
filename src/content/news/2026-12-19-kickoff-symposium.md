@@ -1,6 +1,6 @@
 ---
 title: "キックオフシンポジウム「多様性とは何か？」を開催します"
-date: 2026-12-19
+date: 2026-11-13
 category: event
 summary: "2026年12月19日（土）、東洋大学白山キャンパス8B11教室にて、キックオフシンポジウム「多様性とは何か？ ― 生命・環境・社会をつなぎ、共生を考える ―」を開催します。"
 ---
@@ -13,6 +13,11 @@ summary: "2026年12月19日（土）、東洋大学白山キャンパス8B11教�
 
 - **日時：** 2026年12月19日（土）13:00〜17:00
 - **会場：** 東洋大学白山キャンパス 8B11教室
+
+## ポスター・参加申し込み
+
+- [シンポジウムのポスター（PDF）](/pdf/InclusiveScience_Poster_20261120_rev.pdf)
+- [参加申し込みフォーム](https://docs.google.com/forms/d/e/1FAIpQLSendU2BDNmU477mYlu-EkkS8fl-LWuhSC_QbVI1lq_ERf4FDg/viewform?usp=send_form)
 
 ## 開催趣旨
 
