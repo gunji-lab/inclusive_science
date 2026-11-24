@@ -21,8 +21,8 @@ const formatDate = (date: Date) =>
   <section class="home-hero" aria-labelledby="home-title">
     <div class="hero-inner">
       <p class="hero-kicker">TOYO UNIVERSITY RESEARCH PROJECT</p>
-      <h1 id="home-title">多様性を、<br /><em>力に変える。</em></h1>
-      <p class="hero-lead">見過ごされてきた一つひとつの違いに目を向け、<br />生命・環境・社会の新しい関係をひらきます。</p>
+      <h1 id="home-title">多様性を、<em>力に変える。</em></h1>
+      <p class="hero-lead">見過ごされてきた一つひとつの違いに目を向け、生命・環境・社会の新しい関係をひらきます。</p>
       <p class="project-name">インクルーシブ・サイエンスの創成</p>
       <a class="hero-link" href="/about/">プロジェクトについて <span aria-hidden="true">→</span></a>
     </div>
@@ -127,35 +127,36 @@ const formatDate = (date: Date) =>
 </script>
 
 <style>
-  .home-hero{position:relative;min-height:760px;padding:170px 24px 105px;display:flex;align-items:center;overflow:hidden;background:#faf8f1}
+  .home-hero{position:relative;min-height:760px;padding:145px 24px 90px;display:flex;align-items:flex-start;overflow:hidden;background:#faf8f1}
   .hero-inner{position:relative;z-index:2;width:min(var(--content),100%);margin-inline:auto}
   .hero-kicker,.section-label{margin:0;color:var(--sage);font:700 13px var(--sans);letter-spacing:.12em}
-  .home-hero h1{max-width:760px;margin:25px 0 28px;font-size:clamp(50px,6vw,78px);line-height:1.28;letter-spacing:-.04em;font-weight:600}
+  .home-hero h1{margin:20px 0 22px;font-size:clamp(45px,5vw,68px);line-height:1.25;letter-spacing:-.035em;font-weight:600;white-space:nowrap}
   .home-hero h1 em{color:var(--sage);font-style:normal}
-  .hero-lead{max-width:650px;margin:0;font-size:20px;line-height:1.95;letter-spacing:.015em}
-  .project-name{margin:28px 0 0;color:var(--muted);font-size:15px;font-weight:600;letter-spacing:.04em}
-  .hero-link{display:inline-flex;align-items:center;gap:18px;margin-top:38px;padding-bottom:7px;border-bottom:1px solid var(--ink);font-size:15px;font-weight:600;text-decoration:none}
+  .hero-lead{margin:0;font-size:clamp(15px,1.35vw,18px);line-height:1.7;letter-spacing:0;white-space:nowrap}
+  .project-name{margin:22px 0 0;color:var(--muted);font-size:15px;font-weight:600;letter-spacing:.04em}
+  .hero-link{display:inline-flex;align-items:center;gap:18px;margin-top:26px;padding-bottom:7px;border-bottom:1px solid var(--ink);font-size:15px;font-weight:600;text-decoration:none}
   .hero-link span,.text-link span{transition:transform .2s}
   .hero-link:hover span,.hero-link:focus-visible span,.text-link:hover span,.text-link:focus-visible span{transform:translateX(5px)}
-  .home-section{padding:105px 24px 112px}
+  .home-section{padding:38px 24px 44px}
   .home-container{width:min(var(--content),100%);margin-inline:auto}
   .vision-section{background:var(--white);scroll-margin-top:82px}
-  .vision-section h2,.home-section-heading h2{margin:13px 0 0;font-size:clamp(34px,4vw,43px);line-height:1.45;letter-spacing:-.025em;font-weight:600}
+  .vision-section h2,.home-section-heading h2{margin:8px 0 0;font-size:clamp(34px,4vw,43px);line-height:1.3;letter-spacing:-.025em;font-weight:600}
   .vision-section h2{white-space:nowrap}
-  .vision-copy{width:100%;margin:30px 0 38px}
-  .vision-copy p{margin:0 0 1.1em;font-size:18px;line-height:1.95}
+  .vision-copy{width:100%;margin:16px 0 20px}
+  .vision-copy p{margin:0 0 .55em;font-size:16px;line-height:1.65}
+  .vision-copy p:last-child{margin-bottom:0}
   .text-link{display:inline-flex;align-items:center;gap:14px;margin-top:13px;color:#55755e;font-size:15px;font-weight:600;text-decoration:none;border-bottom:1px solid rgba(85,117,94,.45)}
-  .home-section-heading{margin:0 0 34px}
+  .home-section-heading{margin:0 0 16px}
   .field-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;width:100%}
-  .field-item{display:flex;flex-direction:column;align-items:flex-start;gap:15px;min-width:0;padding:25px 26px 28px;background:var(--green-white);border-top:2px solid var(--line)}
-  .field-number{margin:0;font:700 30px/1 var(--sans)}
+  .field-item{display:flex;flex-direction:column;align-items:flex-start;gap:7px;min-width:0;padding:14px 18px 16px;background:var(--green-white);border-top:2px solid var(--line)}
+  .field-number{margin:0;font:700 22px/1 var(--sans)}
   .field-title>p{margin:0 0 5px;color:var(--muted);font:700 11px var(--sans);letter-spacing:.08em}
-  .field-title h3{margin:0;font-size:19px;line-height:1.6;font-weight:600}
-  .field-theme{margin:0;font-size:17px;font-weight:600;line-height:1.7}
+  .field-title h3{margin:0;font-size:16px;line-height:1.4;font-weight:600}
+  .field-theme{margin:0;font-size:14px;font-weight:600;line-height:1.45}
   .field-red .field-number,.field-red .field-theme{color:var(--coral)}
   .field-green .field-number,.field-green .field-theme{color:var(--sage)}
   .field-blue .field-number,.field-blue .field-theme{color:var(--blue)}
-  .fields-link{display:flex;width:max-content;margin:25px 0 0}
+  .fields-link{display:flex;width:max-content;margin:14px 0 0}
   .news-section{background:var(--paper)}
   .news-heading{display:flex;align-items:end;justify-content:space-between}
   .news-heading .text-link{margin-bottom:8px}
@@ -167,7 +168,8 @@ const formatDate = (date: Date) =>
   .news-card h3 a{display:flex;gap:12px;color:inherit;text-decoration:none}
   .news-card h3 a span{margin-left:auto;color:var(--sage)}
   .news-card h3 a:hover,.news-card h3 a:focus-visible{color:var(--sage)}
-  @media(max-width:900px){.news-card{flex-basis:calc((100% - 20px)/2)}.field-item{padding:22px 20px}.field-title h3{font-size:17px}.field-theme{font-size:15px}}
-  @media(max-width:760px){.field-list{grid-template-columns:1fr}.field-item{gap:10px}}
-  @media(max-width:660px){.home-hero{min-height:700px;padding:135px 20px 82px;align-items:flex-start}.home-hero h1{margin-top:24px;font-size:clamp(42px,9vw,50px);line-height:1.3}.hero-lead{font-size:17px}.hero-lead br{display:none}.project-name{max-width:260px;line-height:1.7}.home-section{padding:76px 20px 82px}.vision-section{scroll-margin-top:70px}.vision-section h2{font-size:clamp(21px,6vw,31px)}.home-section-heading h2{font-size:31px}.vision-copy{margin:25px 0 30px}.vision-copy p{font-size:17px}.home-section-heading{margin-bottom:28px}.field-item{padding:20px}.field-number{font-size:25px}.field-title>p{font-size:10px}.field-title h3{font-size:17px}.field-theme{font-size:16px}.news-card{flex-basis:100%}}
+  @media(max-width:1100px){.home-hero h1{font-size:clamp(38px,5vw,55px)}.hero-lead{white-space:normal}}
+  @media(max-width:900px){.news-card{flex-basis:calc((100% - 20px)/2)}.field-item{padding:16px}.field-title h3{font-size:16px}.field-theme{font-size:14px}}
+  @media(max-width:760px){.field-list{display:flex;overflow-x:auto;scroll-snap-type:x mandatory}.field-item{flex:0 0 min(76vw,310px);scroll-snap-align:start}.home-hero h1{white-space:normal}}
+  @media(max-width:660px){.home-hero{min-height:700px;padding:100px 20px 70px;align-items:flex-start}.home-hero h1{margin-top:20px;font-size:clamp(38px,9vw,50px);line-height:1.3;white-space:normal}.home-hero h1 em{display:block}.hero-lead{font-size:16px;white-space:normal;overflow-wrap:anywhere}.project-name{max-width:260px;line-height:1.7}.home-section{padding:30px 20px 38px}.vision-section{scroll-margin-top:70px}.vision-section h2{font-size:clamp(21px,6vw,31px)}.home-section-heading h2{font-size:28px}.vision-copy{margin:15px 0 18px}.vision-copy p{font-size:15px;line-height:1.6}.home-section-heading{margin-bottom:16px}.field-item{padding:14px 16px}.field-number{font-size:22px}.field-title>p{font-size:10px}.field-title h3{font-size:16px}.field-theme{font-size:14px}.news-card{flex-basis:100%}}
 </style>
