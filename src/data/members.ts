@@ -21,7 +21,6 @@ export const members: Member[] = [
     position: "教授",
     roles: ["プロジェクトリーダー"],
     teams: ["biological-systems"],
-    photo: "/images/kazuko-koshiba-original-crop.webp",
     specialty: "発生生物学／動物の器官発生・再生／心循環器系の発生病態",
     profileUrl: "https://www.toyo.ac.jp/staff/16028.html",
     order: 1,

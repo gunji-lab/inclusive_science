@@ -26,9 +26,7 @@ import { teams } from "../data/teams";
       <SectionHeading number="01" eyebrow="MESSAGE" title="プロジェクトリーダーからのご挨拶" id="message-title" />
       <div class="leader-grid">
         <div class="leader-photo-wrap reveal">
-          <div class="leader-photo-placeholder" role="img" aria-label="小柴和子教授の写真掲載予定スペース">
-            <span>PORTRAIT</span><small>写真掲載予定</small>
-          </div>
+          <img class="leader-photo" src="/images/kazuko-koshiba-original-crop.webp" alt="プロジェクトリーダー 小柴和子教授" width="600" height="600" loading="lazy" />
         </div>
         <div class="leader-content reveal">
           <div class="leader-profile">
@@ -88,3 +86,7 @@ import { teams } from "../data/teams";
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  .leader-photo{display:block;width:100%;aspect-ratio:4/5.2;object-fit:cover;object-position:center;border-radius:12px}
+</style>
