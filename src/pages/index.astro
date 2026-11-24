@@ -21,11 +21,23 @@ const formatDate = (date: Date) =>
 >
   <section class="home-hero" aria-labelledby="home-title">
     <div class="hero-inner">
-      <p class="hero-kicker">TOYO UNIVERSITY RESEARCH PROJECT</p>
-      <h1 id="home-title">多様性を、<br /><em>力に変える。</em></h1>
-      <p class="hero-lead">見過ごされてきた一つひとつの違いに目を向け、<br />生命・環境・社会の新しい関係をひらきます。</p>
-      <p class="project-name">インクルーシブ・サイエンスの創成</p>
-      <a class="hero-link" href="/about/">プロジェクトについて <span aria-hidden="true">→</span></a>
+      <div class="hero-copy">
+        <p class="hero-kicker">TOYO UNIVERSITY RESEARCH PROJECT</p>
+        <h1 id="home-title">多様性を、<br /><em>力に変える。</em></h1>
+        <p class="hero-lead">見過ごされてきた一つひとつの違いに目を向け、<br />生命・環境・社会の新しい関係をひらきます。</p>
+        <p class="project-name">インクルーシブ・サイエンスの創成</p>
+        <a class="hero-link" href="/about/">プロジェクトについて <span aria-hidden="true">→</span></a>
+      </div>
+      {latestNews[0] && (
+        <aside class="hero-news" aria-label="最新のお知らせ">
+          <div class="hero-news-meta">
+            <span>NEWS</span>
+            <time datetime={latestNews[0].data.date.toISOString()}>{formatDate(latestNews[0].data.date)}</time>
+          </div>
+          <h2><a href={`/news/${latestNews[0].id}/`}>{latestNews[0].data.title}<span aria-hidden="true">→</span></a></h2>
+          <a class="hero-news-all" href="/news/">お知らせ一覧を見る →</a>
+        </aside>
+      )}
     </div>
   </section>
 
@@ -40,28 +52,6 @@ const formatDate = (date: Date) =>
         <p>本プロジェクトは、これまで「ばらつき」として扱われることもあった個体差や地域差に目を向け、その違いが生命・生態系・社会の持続性にどのような意味を持つのかを明らかにします。</p>
         <a class="text-link" href="/about/">目的と研究計画を読む <span aria-hidden="true">→</span></a>
       </div>
-    </div>
-  </section>
-
-  <section class="home-section fields-section" aria-labelledby="fields-title">
-    <div class="home-container">
-      <header class="home-section-heading">
-        <p class="section-label">THREE PERSPECTIVES</p>
-        <h2 id="fields-title">3つの視点から、多様性をひもとく。</h2>
-      </header>
-      <div class="field-list">
-        {teams.map((team) => (
-          <article class:list={["field-item", `field-${team.color}`]}>
-            <p class="field-number">{team.number}</p>
-            <div class="field-title">
-              <p>{team.labelEn}</p>
-              <h3>{team.name}</h3>
-            </div>
-            <p class="field-theme">{team.theme}</p>
-          </article>
-        ))}
-      </div>
-      <a class="text-link fields-link" href="/about/#teams">研究領域について詳しく見る <span aria-hidden="true">→</span></a>
     </div>
   </section>
 
@@ -99,11 +89,41 @@ const formatDate = (date: Date) =>
       </section>
     </div>
   </section>
+
+  <section class="home-section fields-section" aria-labelledby="fields-title">
+    <div class="home-container">
+      <header class="home-section-heading">
+        <p class="section-label">THREE PERSPECTIVES</p>
+        <h2 id="fields-title">3つの視点から、多様性をひもとく。</h2>
+      </header>
+      <div class="field-list">
+        {teams.map((team) => (
+          <article class:list={["field-item", `field-${team.color}`]}>
+            <p class="field-number">{team.number}</p>
+            <div class="field-title">
+              <p>{team.labelEn}</p>
+              <h3>{team.name}</h3>
+            </div>
+            <p class="field-theme">{team.theme}</p>
+          </article>
+        ))}
+      </div>
+      <a class="text-link fields-link" href="/about/#teams">研究領域について詳しく見る <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
 </BaseLayout>
 
 <style>
   .home-hero{position:relative;min-height:760px;padding:170px 24px 105px;display:flex;align-items:center;overflow:hidden;background:#faf8f1}
   .hero-inner{position:relative;z-index:2;width:min(var(--content),100%);margin-inline:auto}
+  .hero-news{position:absolute;right:0;bottom:8px;width:330px;padding:24px 27px;background:var(--white);border-top:3px solid var(--sage);box-shadow:0 12px 32px rgba(31,46,35,.07)}
+  .hero-news-meta{display:flex;align-items:center;gap:16px;color:var(--muted);font:600 12px var(--sans);letter-spacing:.05em}
+  .hero-news-meta span{color:var(--sage);font-weight:700;letter-spacing:.12em}
+  .hero-news h2{margin:13px 0 17px;font-size:17px;line-height:1.55;font-weight:600}
+  .hero-news h2 a{display:flex;align-items:center;gap:12px;color:inherit;text-decoration:none}
+  .hero-news h2 a span{margin-left:auto;color:var(--sage)}
+  .hero-news h2 a:hover,.hero-news h2 a:focus-visible,.hero-news-all:hover,.hero-news-all:focus-visible{color:var(--sage)}
+  .hero-news-all{color:#55755e;font-size:12px;font-weight:600;text-decoration:none}
   .hero-kicker,.section-label{margin:0;color:var(--sage);font:700 13px var(--sans);letter-spacing:.12em}
   .home-hero h1{max-width:760px;margin:25px 0 30px;font-size:clamp(64px,8vw,104px);line-height:1.17;letter-spacing:-.065em;font-weight:600}
   .home-hero h1 em{color:var(--sage);font-style:normal}
@@ -120,10 +140,10 @@ const formatDate = (date: Date) =>
   .vision-copy{padding-top:2px}
   .vision-copy p{margin:0 0 1.35em;font-size:18px;line-height:1.95}
   .text-link{display:inline-flex;align-items:center;gap:14px;margin-top:13px;color:#55755e;font-size:15px;font-weight:600;text-decoration:none;border-bottom:1px solid rgba(85,117,94,.45)}
-  .fields-section{background:var(--green-white)}
-  .home-section-heading{max-width:var(--reading);margin:0 auto 50px}
+  .fields-section{background:var(--green-white);padding-top:76px;padding-bottom:82px}
+  .home-section-heading{max-width:var(--reading);margin:0 auto 34px}
   .field-list{max-width:var(--reading);margin-inline:auto;border-top:1px solid var(--line)}
-  .field-item{display:grid;grid-template-columns:66px minmax(250px,.9fr) minmax(220px,1fr);gap:26px;align-items:center;padding:31px 0 34px;border-bottom:1px solid var(--line)}
+  .field-item{display:grid;grid-template-columns:66px minmax(250px,.9fr) minmax(220px,1fr);gap:26px;align-items:center;padding:22px 0 24px;border-bottom:1px solid var(--line)}
   .field-number{margin:0;font:700 30px/1 var(--sans)}
   .field-title>p{margin:0 0 5px;color:var(--muted);font:700 11px var(--sans);letter-spacing:.08em}
   .field-title h3{margin:0;font-size:19px;line-height:1.6;font-weight:600}
@@ -131,7 +151,7 @@ const formatDate = (date: Date) =>
   .field-red .field-number,.field-red .field-theme{color:var(--coral)}
   .field-green .field-number,.field-green .field-theme{color:var(--sage)}
   .field-blue .field-number,.field-blue .field-theme{color:var(--blue)}
-  .fields-link{display:flex;width:max-content;margin:35px auto 0}
+  .fields-link{display:flex;width:max-content;margin:25px auto 0}
   .updates-section{background:var(--paper)}
   .updates-grid{display:grid;grid-template-columns:minmax(280px,.82fr) minmax(0,1.45fr);gap:90px}
   .research-preview{padding-right:56px;border-right:1px solid var(--line)}
@@ -150,5 +170,7 @@ const formatDate = (date: Date) =>
   .home-news-list p{grid-column:2;margin:9px 0 0;color:var(--muted);display:-webkit-box;overflow:hidden;font-size:14px;line-height:1.75;-webkit-box-orient:vertical;-webkit-line-clamp:2}
   .mobile-news-link{display:none}
   @media(max-width:900px){.vision-grid{grid-template-columns:1fr;gap:34px}.vision-grid header,.vision-copy{max-width:var(--reading);margin-inline:auto;width:100%}.updates-grid{grid-template-columns:1fr;gap:70px}.research-preview{padding-right:0;border-right:0}.field-item{grid-template-columns:58px minmax(0,1fr)}.field-theme{grid-column:2}}
-  @media(max-width:660px){.home-hero{min-height:700px;padding:135px 20px 82px;align-items:flex-start}.home-hero h1{margin-top:24px;font-size:57px;line-height:1.23}.hero-lead{font-size:17px}.hero-lead br{display:none}.project-name{max-width:260px;line-height:1.7}.home-section{padding:76px 20px 82px}.vision-grid h2,.home-section-heading h2,.updates-section h2{font-size:31px}.vision-copy p{font-size:17px}.home-section-heading{margin-bottom:35px}.field-item{grid-template-columns:44px minmax(0,1fr);gap:14px;padding:25px 0 28px}.field-number{font-size:25px}.field-title>p{font-size:10px}.field-title h3{font-size:17px}.field-theme{font-size:16px}.updates-grid{gap:65px}.preview-heading-row{align-items:flex-start}.desktop-news-link{display:none}.home-news-list article{grid-template-columns:1fr;gap:7px}.home-news-list p{grid-column:1;margin-top:2px}.mobile-news-link{display:inline-flex;margin-top:28px}}
+  @media(max-width:1100px){.hero-news{width:280px}.home-hero h1{font-size:clamp(64px,7vw,84px)}}
+  @media(max-width:900px){.hero-news{position:static;width:min(420px,100%);margin-top:42px}.home-hero{min-height:0}.home-hero h1{font-size:clamp(57px,8vw,76px)}}
+  @media(max-width:660px){.home-hero{min-height:700px;padding:135px 20px 82px;align-items:flex-start}.home-hero h1{margin-top:24px;font-size:57px;line-height:1.23}.hero-lead{font-size:17px}.hero-lead br{display:none}.project-name{max-width:260px;line-height:1.7}.home-section{padding:76px 20px 82px}.fields-section{padding-top:62px;padding-bottom:68px}.vision-grid h2,.home-section-heading h2,.updates-section h2{font-size:31px}.vision-copy p{font-size:17px}.home-section-heading{margin-bottom:28px}.field-item{grid-template-columns:44px minmax(0,1fr);gap:14px;padding:19px 0 21px}.field-number{font-size:25px}.field-title>p{font-size:10px}.field-title h3{font-size:17px}.field-theme{font-size:16px}.updates-grid{gap:65px}.preview-heading-row{align-items:flex-start}.desktop-news-link{display:none}.home-news-list article{grid-template-columns:1fr;gap:7px}.home-news-list p{grid-column:1;margin-top:2px}.mobile-news-link{display:inline-flex;margin-top:28px}}
 </style>
