@@ -48,17 +48,17 @@ const categoryLabels = {
 </BaseLayout>
 
 <style>
-  .news-page{min-height:calc(100vh - 130px);padding:158px 24px 110px;background:var(--paper)}
+  .news-page{min-height:calc(100vh - 130px);padding:120px 24px 70px;background:var(--paper)}
   .news-container{width:min(var(--content),100%);margin-inline:auto}
-  .news-heading{max-width:var(--reading);margin:0 auto 58px}
+  .news-heading{max-width:var(--reading);margin:0 auto 36px}
   .news-heading h1{margin:12px 0 0;font-size:clamp(42px,5vw,58px);line-height:1.35;letter-spacing:-.035em;font-weight:600}
   .news-list{max-width:var(--reading);margin-inline:auto;border-top:1px solid var(--line)}
-  .news-item{display:grid;grid-template-columns:150px minmax(0,1fr);gap:30px;padding:36px 0 40px;border-bottom:1px solid var(--line)}
+  .news-item{display:grid;grid-template-columns:150px minmax(0,1fr);gap:24px;padding:24px 0 28px;border-bottom:1px solid var(--line)}
   .news-meta{padding-top:5px;display:flex;flex-direction:column;gap:8px;color:var(--muted);font:600 14px var(--sans);letter-spacing:.04em}
   .news-meta span{color:var(--sage);font-size:12px;letter-spacing:.1em}
   .news-body h2{margin:0 0 14px;font-size:23px;line-height:1.65;letter-spacing:-.015em;font-weight:600}
   .news-body h2 a{color:inherit;text-decoration:none}
   .news-body h2 a:hover,.news-body h2 a:focus-visible{color:var(--sage)}
   .news-body p{margin:0;font-size:17px;line-height:1.9}
-  @media(max-width:660px){.news-page{padding:125px 20px 80px}.news-heading{margin-bottom:40px}.news-item{grid-template-columns:1fr;gap:15px;padding:30px 0 34px}.news-meta{flex-direction:row;align-items:center;gap:16px}.news-body h2{font-size:21px}.news-body p{font-size:16px}}
+  @media(max-width:660px){.news-page{padding:100px 20px 58px}.news-heading{margin-bottom:28px}.news-item{grid-template-columns:1fr;gap:12px;padding:22px 0 26px}.news-meta{flex-direction:row;align-items:center;gap:16px}.news-body h2{font-size:21px}.news-body p{font-size:16px}}
 </style>
