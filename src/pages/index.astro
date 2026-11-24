@@ -31,7 +31,7 @@ const formatDate = (date: Date) =>
     <div class="hero-inner">
       <div class="hero-copy">
         <p class="hero-kicker">TOYO UNIVERSITY RESEARCH PROJECT</p>
-        <h1 id="home-title">インクルーシブ・サイエンスの創生</h1>
+        <h1 id="home-title">インクルーシブ・サイエンスの<em>創生</em></h1>
         <h2 class="hero-subtitle">違いを、科学の中心へ。</h2>
         <div class="hero-description">
           <p>私たち一人ひとりが異なるように、生きものの形や機能、環境への応答にも、さまざまな「違い」があります。生態系や社会もまた、多様な要素の相互作用によって成り立っています。</p>
@@ -160,9 +160,11 @@ const formatDate = (date: Date) =>
   .home-hero{position:relative;min-height:650px;padding:130px 24px 72px;display:flex;align-items:center;overflow:hidden;background:#faf8f1}
   .hero-inner{position:relative;z-index:2;width:min(var(--content),100%);margin-inline:auto}
   .hero-kicker,.section-label{margin:0;color:var(--sage);font:700 13px var(--sans);letter-spacing:.12em}
-  .home-hero h1{margin:16px 0 8px;font-size:clamp(30px,3.3vw,43px);line-height:1.4;letter-spacing:-.035em;font-weight:600;white-space:nowrap}
+  .home-hero h1{margin:20px 0 20px;font-size:clamp(32px,4vw,58px);line-height:1.2;letter-spacing:-.055em;font-weight:600;white-space:nowrap}
+  .home-hero h1 em{position:relative;color:var(--sage);font-style:normal}
+  .home-hero h1 em:after{content:"";position:absolute;left:2%;right:-3%;bottom:-4px;height:1px;background:var(--coral)}
   .hero-subtitle{margin:0 0 22px;font-size:clamp(25px,2.6vw,32px);line-height:1.5;font-weight:600;letter-spacing:-.025em}
-  .hero-description{max-width:950px;font-size:16px;line-height:1.85}
+  .hero-description{width:100%;font-size:16px;line-height:1.85}
   .hero-description p{margin:0 0 12px}
   .hero-links{display:flex;flex-wrap:wrap;gap:14px 34px;margin-top:22px}
   .hero-link{display:inline-flex;align-items:center;gap:13px;padding-bottom:6px;border-bottom:1px solid var(--ink);font-size:14px;font-weight:600;text-decoration:none;white-space:nowrap}
@@ -197,7 +199,6 @@ const formatDate = (date: Date) =>
   .field-green .field-number,.field-green .field-theme{color:var(--sage)}
   .field-blue .field-number,.field-blue .field-theme{color:var(--blue)}
   .fields-link{display:flex;width:max-content;margin:25px auto 0}
-  @media(max-width:1100px){.home-hero h1{font-size:clamp(29px,3.2vw,39px)}}
-  @media(max-width:900px){.field-item{grid-template-columns:58px minmax(0,1fr)}.field-theme{grid-column:2}.home-hero h1{white-space:normal}.news-card{flex-basis:calc((100% - 20px)/2)}}
-  @media(max-width:660px){.home-intro-inner{padding:30px 20px}.intro-title{font-size:clamp(52px,11vw,72px)}.home-hero{min-height:0;padding:125px 20px 66px;align-items:flex-start}.home-hero h1{margin-top:18px;font-size:31px;line-height:1.45}.hero-subtitle{font-size:25px}.hero-description{font-size:15px}.hero-links{gap:11px 24px;margin-top:18px}.hero-link{font-size:13px}.hero-news{margin-top:48px}.hero-news-heading h2{font-size:24px}.news-card{flex-basis:100%}.home-section{padding:76px 20px 82px}.fields-section{padding-top:62px;padding-bottom:68px}.home-section-heading h2{font-size:31px}.home-section-heading{margin-bottom:28px}.field-item{grid-template-columns:44px minmax(0,1fr);gap:14px;padding:19px 0 21px}.field-number{font-size:25px}.field-title>p{font-size:10px}.field-title h3{font-size:17px}.field-theme{font-size:16px}}
+  @media(max-width:900px){.field-item{grid-template-columns:58px minmax(0,1fr)}.field-theme{grid-column:2}.news-card{flex-basis:calc((100% - 20px)/2)}}
+  @media(max-width:660px){.home-intro-inner{padding:30px 20px}.intro-title{font-size:clamp(52px,11vw,72px)}.home-hero{min-height:0;padding:125px 20px 66px;align-items:flex-start}.home-hero h1{margin-top:18px;font-size:clamp(16px,4.6vw,28px)}.hero-subtitle{font-size:25px}.hero-description{font-size:15px}.hero-links{gap:11px 24px;margin-top:18px}.hero-link{font-size:13px}.hero-news{margin-top:48px}.hero-news-heading h2{font-size:24px}.news-card{flex-basis:100%}.home-section{padding:76px 20px 82px}.fields-section{padding-top:62px;padding-bottom:68px}.home-section-heading h2{font-size:31px}.home-section-heading{margin-bottom:28px}.field-item{grid-template-columns:44px minmax(0,1fr);gap:14px;padding:19px 0 21px}.field-number{font-size:25px}.field-title>p{font-size:10px}.field-title h3{font-size:17px}.field-theme{font-size:16px}}
 </style>
